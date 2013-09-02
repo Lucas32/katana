@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Framework </title>
+		<script type="text/javascript" src="js/katana.js"></script>
+		</script>
+		<style type="text/css">
+			*{
+				margin:0;
+			}
+            #container{
+				width: 1024px;
+                border: solid 1px #ccc;
+                min-height: 500px;
+                font-size: 18px;
+                font-family: "sans-serif";
+                color: #333;
+            }
+			.header{
+				width: 100%;
+				background:#ccc;
+			}
+			.header h1{
+				font-size:32px;
+				width:100%;
+				text-align:center;
+			}
+			.header nav{
+				width:100%;
+				text-align:right;
+			}
+			.header nav ul li{
+				display:inline-block;
+				margin-right:10px;
+			}
+			.header nav ul li:hover a{
+				background-color:orange;
+				color:black;
+			}
+			.header nav a{
+				text-decoration:none;
+				color: orange;
+			}
+			.wrapper{
+			
+			}
+			.footer{
+			
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			
+		</div>
+		<script type="text/javascript">
+			(function(){
+				//----- HEADER ------
+				var opch = {
+					"id": "header",
+					"class": "header"
+				}
+				var nav = $.crear("nav"/*,opcNav*/);
+				var ul = $.crear("ul");
+				var menu = new Array("Inicio","Contacto","Servicios");
+				
+				var h1 = $.crear("h1");
+				h1.esc("Título");
+				h1.css({"color":"white"});
+				/*
+				var opcA1 = {
+					"href":"#"
+				}
+				var opcA2 = {
+					"href":"#"
+				}
+				var opcA3 = {
+					"href":"#"
+				}
+				*/
+				
+				//----- WRAPPER ------
+				var opcw = {
+					"id": "wrapper",
+					"class": "wrapper"	
+				}
+				var w = $.crear("div",opcw);
+				
+				var form = $.crear("form");
+				
+				var opcIn = {
+					"id":"nombre",
+					"placeholder":"Ingrese nombre"
+				}
+				
+				var nombre = $.crear("input",opcIn);
+				var opcOb = {
+					"vacio": true,
+					"letras":true,
+					"max":10,
+					"correo":true
+				}
+				nombre.obliga(opcOb);
+				
+				form.insertar(nombre);
+				w.insertar(form);
+				
+				//----- FOOTER ------
+				var opcf = {
+					"id": "footer",
+					"class": "footer"	
+				}
+				
+				var h = $.crear("div",opch);
+				var f = $.crear("div",opcf);
+				
+				//-------------------
+				
+				/*
+				var li1 = $.crear("li");
+				var li2 = $.crear("li");
+				var li3 = $.crear("li");
+				
+				var a1 = $.crear("a",opcA1);
+				a1.esc("Inicio");
+				var a2 = $.crear("a",opcA2);
+				a2.esc("Nosotros");
+				var a3 = $.crear("a",opcA3);
+				a3.esc("Contacto");
+				
+				li1.insertar(a1);
+				li2.insertar(a2);
+				li3.insertar(a3);
+				
+				ul.insertar(li1);
+				ul.insertar(li2);
+				ul.insertar(li3);
+				*/
+				
+				for(t=0;t<3;t++){
+					var a = $.crear("a");
+					a.esc(menu[t]);
+					var li = $.crear("li");
+					li.insertar(a);
+					ul.insertar(li);
+				}
+				
+				nav.insertar(ul);
+				
+				h.insertar(nav);
+				h.insertar(h1);
+				
+				$.get("container").insertar(h);
+				$.get("container").insertar(w);
+				$.get("container").insertar(f);
+				
+			})();
+		</script>
+	</body>
+</html>
